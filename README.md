@@ -25,6 +25,14 @@ This app was developed and hosted by [Good Heart Tech](https://goodhearttech.org
 - Font Awesome for icons
 - Hosted on Cloudflare Pages
 
+## 🖥️ Run Locally
+
+This is a static site with no build step and no server-side code.
+
+1. Clone or download this repository
+2. Open `index.html` directly in your browser, or serve the folder with any static file server (for example `npx serve .`)
+3. No API keys or configuration are needed, everything runs client-side
+
 ## 🚀 Deployment
 
 1. Fork this repository to your GitHub account

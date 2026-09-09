@@ -272,4 +272,3 @@ copyButton.addEventListener('click', copyToClipboard);
 
 // Generate initial passphrase when page loads
 passwordOutput.value = generatePassphrase(); 
-passwordOutput.value = generatePassphrase(); 
