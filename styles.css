@@ -82,35 +82,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 #passwordOutput:hover { border-color: var(--ght-palette-primary); }
 
-button { cursor: pointer; transition: background-color 0.2s, color 0.2s; }
-
-/* Primary buttons: richBlack on primary, huduPrimary with white on hover */
-#copyButton,
-.primary-button {
-    background-color: var(--ght-palette-primary);
-    color: var(--head);
-    border: none;
-    border-radius: 5px;
-    font-family: inherit;
-    font-weight: var(--ght-font-weight-semibold);
-}
-#copyButton:hover,
-.primary-button:hover {
-    background-color: var(--ght-palette-hudu-primary);
-    color: var(--ght-palette-white);
-}
-
-#copyButton { padding: 0 1rem; display: flex; align-items: center; }
-
-.primary-button {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
+/* Buttons come from ght-buttons.css; layout only here */
+#copyButton { flex-shrink: 0; }
+.primary-button { width: 100%; }
 
 p { margin-bottom: 1.5rem; color: var(--text); }
 p:last-child { margin-bottom: 0; }
@@ -118,7 +92,7 @@ p:last-child { margin-bottom: 0; }
 a { color: var(--link); text-decoration: underline; }
 a:hover { color: var(--head); }
 
-/* Popup message: text plus a check icon, white on huduPrimary */
+/* Popup message: icon plus text, white on huduPrimary (success) or richBlack (failed) */
 .popup-message {
     position: fixed;
     top: 20px;
@@ -140,6 +114,7 @@ a:hover { color: var(--head); }
     opacity: 0;
     pointer-events: none;
 }
+.popup-message.is-error { background-color: var(--ght-palette-rich-black); }
 .popup-message.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
 
 /* Good Heart Tech standard app footer */
@@ -157,4 +132,5 @@ a:hover { color: var(--head); }
 @media (max-width: 600px) {
     .container { padding: 1rem; }
     .generator-section, .info-section { padding: 1.25rem; }
+    .password-display { gap: 0.5rem; }
 }

@@ -148,7 +148,9 @@ const currentYear = document.getElementById('ght-year');
 // Create popup message element
 const popupMessage = document.createElement('div');
 popupMessage.className = 'popup-message';
-popupMessage.innerHTML = '<svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> ' + 'Passphrase Copied!';
+popupMessage.setAttribute('role', 'status');
+const checkIcon = '<svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> ';
+const errorIcon = '<svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg> ';
 document.body.appendChild(popupMessage);
 
 // Set current year in footer
@@ -170,10 +172,13 @@ function countNumbers(str) {
 }
 
 // Show popup message
-function showPopupMessage(message) {
-    popupMessage.innerHTML = '<svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> ' + message;
+let popupTimer;
+function showPopupMessage(message, isError = false) {
+    popupMessage.innerHTML = (isError ? errorIcon : checkIcon) + message;
+    popupMessage.classList.toggle('is-error', isError);
     popupMessage.classList.add('show');
-    setTimeout(() => {
+    clearTimeout(popupTimer);
+    popupTimer = setTimeout(() => {
         popupMessage.classList.remove('show');
     }, 3000);
 }
@@ -256,10 +261,10 @@ function generatePassphrase() {
 async function copyToClipboard() {
     try {
         await navigator.clipboard.writeText(passwordOutput.value);
-        showPopupMessage('Passphrase Copied!');
+        showPopupMessage('Passphrase copied');
     } catch (err) {
         console.error('Failed to copy text: ', err);
-        showPopupMessage('Failed to copy passphrase');
+        showPopupMessage('Failed to copy passphrase', true);
     }
 }
 
