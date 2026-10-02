@@ -143,12 +143,12 @@ const specialChars = ['!', '@', '#', '$', '%', '&', '*'];
 const passwordOutput = document.getElementById('passwordOutput');
 const generateButton = document.getElementById('generateButton');
 const copyButton = document.getElementById('copyButton');
-const currentYear = document.getElementById('currentYear');
+const currentYear = document.getElementById('ght-year');
 
 // Create popup message element
 const popupMessage = document.createElement('div');
 popupMessage.className = 'popup-message';
-popupMessage.innerHTML = '<i class="fa-solid fa-check"></i> Passphrase Copied!';
+popupMessage.innerHTML = '<svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> ' + 'Passphrase Copied!';
 document.body.appendChild(popupMessage);
 
 // Set current year in footer
@@ -171,7 +171,7 @@ function countNumbers(str) {
 
 // Show popup message
 function showPopupMessage(message) {
-    popupMessage.innerHTML = `<i class="fa-solid fa-check"></i> ${message}`;
+    popupMessage.innerHTML = '<svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> ' + message;
     popupMessage.classList.add('show');
     setTimeout(() => {
         popupMessage.classList.remove('show');

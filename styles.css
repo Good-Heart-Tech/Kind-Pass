@@ -1,125 +1,110 @@
-/* Reset and base styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Kind Pass, Good Heart Tech light theme. Tokens come from ght-variables.css. */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --primary-color: #7189ff;
-    --hover-color: #a0ddff;
-    --text-color: #FFFFFF;
-    --bg-color: #091D20;
-    --section-bg: #394053;
-    --title-color: #a0ddff;
-    --border-color: #7189ff;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --bg: var(--ght-palette-white);
+    --text: var(--ght-palette-charcoal);
+    --head: var(--ght-palette-rich-black);
+    --link: var(--ght-palette-hudu-primary);
+    --line: var(--ght-palette-hudu-light);
+    --wash: color-mix(in srgb, var(--ght-palette-hudu-light) 30%, white);
+    --shadow: 0 2px 6px rgba(9, 29, 32, 0.08);
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: var(--ght-font-family-body);
+    font-size: var(--ght-font-size-base);
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--bg-color);
+    color: var(--text);
+    background-color: var(--bg);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+:focus-visible { outline: 3px solid var(--ght-palette-primary); outline-offset: 2px; }
+
 .container {
+    width: 100%;
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    flex: 1;
 }
 
-/* Header styles */
-header {
-    text-align: center;
-    margin-bottom: 0.5rem;
-}
+.icon { flex-shrink: 0; }
+
+header { text-align: center; margin-bottom: 0.5rem; }
 
 h1, h2, h3, h4, h5, h6 {
-    color: var(--text-color);
+    font-family: var(--ght-font-family-heading);
+    color: var(--head);
     margin-bottom: 1rem;
 }
 
-.subtitle {
-    color: var(--text-color);
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-}
+.subtitle { color: var(--text); font-size: 1.1rem; margin-bottom: 0.5rem; }
 
 .privacy-notice {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    color: #808080;
+    color: var(--text);
     font-size: 0.9rem;
     margin-bottom: 1rem;
     padding: 0 1rem;
     text-align: center;
 }
+.privacy-notice .icon { color: var(--link); }
 
-.privacy-notice i {
-    color: #808080;
-}
-
-/* Generator section styles */
-.generator-section {
-    background-color: var(--section-bg);
+.generator-section,
+.info-section {
+    background-color: var(--wash);
+    border: 1px solid var(--line);
     padding: 2rem;
     border-radius: 10px;
     margin-bottom: 3rem;
     box-shadow: var(--shadow);
 }
 
-.password-display {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
+.password-display { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
 
 #passwordOutput {
     flex: 1;
+    min-width: 0;
     padding: 1rem;
     font-size: 1.2rem;
-    background-color: var(--bg-color);
-    border: 2px solid var(--border-color);
+    background-color: var(--ght-palette-white);
+    border: 2px solid var(--line);
     border-radius: 5px;
-    color: var(--text-color);
-    font-family: monospace;
+    color: var(--head);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
+#passwordOutput:hover { border-color: var(--ght-palette-primary); }
 
-/* Button styles */
-button {
-    cursor: pointer;
-    transition: all 0.3s;
-    color: var(--text-color);
-}
+button { cursor: pointer; transition: background-color 0.2s, color 0.2s; }
 
-button:hover {
-    color: #000000;
-}
-
-#copyButton {
-    padding: 0 1rem;
-    background-color: var(--primary-color);
+/* Primary buttons: richBlack on primary, huduPrimary with white on hover */
+#copyButton,
+.primary-button {
+    background-color: var(--ght-palette-primary);
+    color: var(--head);
     border: none;
     border-radius: 5px;
+    font-family: inherit;
+    font-weight: var(--ght-font-weight-semibold);
+}
+#copyButton:hover,
+.primary-button:hover {
+    background-color: var(--ght-palette-hudu-primary);
+    color: var(--ght-palette-white);
 }
 
-#copyButton:hover {
-    background-color: var(--hover-color);
-}
+#copyButton { padding: 0 1rem; display: flex; align-items: center; }
 
 .primary-button {
     width: 100%;
     padding: 1rem;
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 5px;
     font-size: 1.1rem;
     display: flex;
     align-items: center;
@@ -127,130 +112,27 @@ button:hover {
     gap: 0.5rem;
 }
 
-.primary-button:hover {
-    background-color: var(--hover-color);
-}
+p { margin-bottom: 1.5rem; color: var(--text); }
+p:last-child { margin-bottom: 0; }
 
-.primary-button i {
-    font-size: 1.2rem;
-}
+a { color: var(--link); text-decoration: underline; }
+a:hover { color: var(--head); }
 
-/* Info section styles */
-.info-section {
-    background-color: var(--section-bg);
-    padding: 2rem;
-    border-radius: 10px;
-    margin-bottom: 3rem;
-    box-shadow: var(--shadow);
-}
-
-h2 {
-    color: var(--title-color);
-    margin-bottom: 1rem;
-}
-
-p {
-    margin-bottom: 1.5rem;
-    color: var(--text-color);
-}
-
-a {
-    color: var(--title-color);
-    text-decoration: underline;
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: var(--primary-color);
-}
-
-/* Footer styles */
-footer {
-    margin-top: auto;
-    padding-top: 2rem;
-}
-
-.disclaimer {
-    color: #808080;
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 0.9rem;
-    padding: 0 1rem;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-top: 1px solid var(--section-bg);
-}
-
-.footer-brand {
-    display: flex;
-    align-items: center;
-}
-
-.footer-logo {
-    height: 40px;
-    transition: transform 0.3s ease;
-}
-
-.footer-brand:hover .footer-logo {
-    transform: scale(1.1);
-}
-
-.copyright {
-    color: var(--text-color);
-    font-size: 0.9rem;
-}
-
-.footer-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.donate-button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--primary-color);
-    border-radius: 5px;
-    color: var(--text-color);
-    text-decoration: none;
-    transition: all 0.3s;
-}
-
-.donate-button:hover {
-    background-color: var(--hover-color);
-    color: #000000;
-}
-
-.github-link {
-    font-size: 1.5rem;
-    color: var(--text-color);
-    transition: color 0.3s;
-}
-
-.github-link:hover {
-    color: var(--primary-color);
-}
-
-/* Popup message styles */
+/* Popup message: text plus a check icon, white on huduPrimary */
 .popup-message {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%) translateY(-100%);
-    background-color: var(--primary-color);
-    color: var(--text-color);
+    background-color: var(--ght-palette-hudu-primary);
+    color: var(--ght-palette-white);
     padding: 1rem 2rem;
     border-radius: 5px;
-    font-weight: bold;
+    font-weight: var(--ght-font-weight-bold);
     transition: transform 0.3s ease-in-out;
     z-index: 1000;
+    width: max-content;
+    max-width: 90vw;
     box-shadow: var(--shadow);
     display: flex;
     align-items: center;
@@ -258,53 +140,21 @@ footer {
     opacity: 0;
     pointer-events: none;
 }
+.popup-message.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
 
-.popup-message.show {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-}
+/* Good Heart Tech standard app footer */
+.ght-footer { width: 100%; margin-top: auto; padding: 22px 24px 26px; text-align: center; background: color-mix(in srgb, var(--ght-palette-hudu-light) 30%, white); border-top: 1px solid var(--ght-palette-hudu-light); color: var(--ght-palette-charcoal); }
+.ght-footer-note { max-width: 52rem; margin: 0 auto 16px; font-size: .8125rem; font-style: italic; color: var(--ght-palette-charcoal); }
+.ght-footer-row { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.ght-footer-logo img { display: block; height: 30px; width: auto; }
+.ght-footer-copy { font-size: .9375rem; }
+.ght-footer-donate { display: inline-flex; line-height: 1.2; align-items: center; gap: 8px; padding: 9px 22px; border-radius: 8px; background: var(--ght-palette-hudu-primary); color: var(--ght-palette-white); font-weight: var(--ght-font-weight-semibold); text-decoration: none; }
+.ght-footer-donate:hover { background: var(--ght-palette-rich-black); color: var(--ght-palette-white); }
+.ght-footer-github { display: inline-flex; color: var(--ght-palette-rich-black); }
+.ght-footer-github:hover { color: var(--ght-palette-hudu-primary); }
+.ght-footer a:focus-visible { outline: 3px solid var(--ght-palette-primary); outline-offset: 3px; }
 
-.popup-message i {
-    font-size: 1.2rem;
-}
-
-/* Responsive design */
 @media (max-width: 600px) {
-    .container {
-        padding: 1rem;
-    }
-
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 1.5rem;
-    }
-
-    .footer-left {
-        align-items: center;
-    }
-
-    .footer-brand {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .footer-right {
-        justify-content: center;
-    }
+    .container { padding: 1rem; }
+    .generator-section, .info-section { padding: 1.25rem; }
 }
-
-/* Responsive footer */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-
-    .footer-actions {
-        justify-content: center;
-    }
-} 
