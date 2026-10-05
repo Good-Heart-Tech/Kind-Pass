@@ -5,9 +5,9 @@
     --bg: var(--ght-palette-white);
     --text: var(--ght-palette-charcoal);
     --head: var(--ght-palette-rich-black);
-    --link: var(--ght-palette-hudu-primary);
-    --line: var(--ght-palette-hudu-light);
-    --wash: color-mix(in srgb, var(--ght-palette-hudu-light) 30%, white);
+    --link: var(--ght-palette-primary-dark);
+    --line: var(--ght-palette-primary-tint);
+    --wash: color-mix(in srgb, var(--ght-palette-primary-tint) 30%, white);
     --shadow: 0 2px 6px rgba(9, 29, 32, 0.08);
 }
 
@@ -92,13 +92,13 @@ p:last-child { margin-bottom: 0; }
 a { color: var(--link); text-decoration: underline; }
 a:hover { color: var(--head); }
 
-/* Popup message: icon plus text, white on huduPrimary (success) or richBlack (failed) */
+/* Popup message: icon plus text, white on primaryDark (success) or richBlack (failed) */
 .popup-message {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%) translateY(-100%);
-    background-color: var(--ght-palette-hudu-primary);
+    background-color: var(--ght-palette-primary-dark);
     color: var(--ght-palette-white);
     padding: 1rem 2rem;
     border-radius: 5px;
@@ -118,15 +118,15 @@ a:hover { color: var(--head); }
 .popup-message.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
 
 /* Good Heart Tech standard app footer */
-.ght-footer { width: 100%; margin-top: auto; padding: 22px 24px 26px; text-align: center; background: color-mix(in srgb, var(--ght-palette-hudu-light) 30%, white); border-top: 1px solid var(--ght-palette-hudu-light); color: var(--ght-palette-charcoal); }
+.ght-footer { width: 100%; margin-top: auto; padding: 22px 24px 26px; text-align: center; background: color-mix(in srgb, var(--ght-palette-primary-tint) 30%, white); border-top: 1px solid var(--ght-palette-primary-tint); color: var(--ght-palette-charcoal); }
 .ght-footer-note { max-width: 52rem; margin: 0 auto 16px; font-size: .8125rem; font-style: italic; color: var(--ght-palette-charcoal); }
 .ght-footer-row { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
 .ght-footer-logo img { display: block; height: 30px; width: auto; }
 .ght-footer-copy { font-size: .9375rem; }
-.ght-footer-donate { display: inline-flex; line-height: 1.2; align-items: center; gap: 8px; padding: 9px 22px; border-radius: 8px; background: var(--ght-palette-hudu-primary); color: var(--ght-palette-white); font-weight: var(--ght-font-weight-semibold); text-decoration: none; }
+.ght-footer-donate { display: inline-flex; line-height: 1.2; align-items: center; gap: 8px; padding: 9px 22px; border-radius: 8px; background: var(--ght-palette-primary-dark); color: var(--ght-palette-white); font-weight: var(--ght-font-weight-semibold); text-decoration: none; }
 .ght-footer-donate:hover { background: var(--ght-palette-rich-black); color: var(--ght-palette-white); }
 .ght-footer-github { display: inline-flex; color: var(--ght-palette-rich-black); }
-.ght-footer-github:hover { color: var(--ght-palette-hudu-primary); }
+.ght-footer-github:hover { color: var(--ght-palette-primary-dark); }
 .ght-footer a:focus-visible { outline: 3px solid var(--ght-palette-primary); outline-offset: 3px; }
 
 @media (max-width: 600px) {
